@@ -17,19 +17,21 @@
 #	$t2: sum of all numbers
 #	$t3: loop counter
 #	$t4: flag
+#	$t5: 100
 
 main:
 	ori 	$t0, $zero, 0
 	ori 	$t1, $zero, 0
 	ori 	$t2, $zero, 0
 	ori 	$t3, $zero, 1
+	ori 	$t5, $zero, 100
 
 while:
-	sleiu 	$t4, $t3, 100
+	sleu 	$t4, $t3, $t5
 	beqz 	$t4, endwhile
 	sll	$zero, $zero, 0
 	andi	$t4, $t3, 1
-	bnez 	$t4, oddsum:
+	bnez 	$t4, oddsum
 	sll 	$zero, $zero, 0
 	add 	$t0, $t0, $t3
 oddsum:
@@ -39,3 +41,8 @@ oddsum:
 	j 	while 
 
 endwhile:
+
+	li 	$v0, 10
+	syscall
+
+	
