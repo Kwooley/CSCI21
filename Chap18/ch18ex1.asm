@@ -24,7 +24,7 @@ main:
 	ori 	$t1, $zero, 0
 	ori 	$t2, $zero, 0
 	ori 	$t3, $zero, 1
-	ori 	$t5, $zero, 100
+	ori 	$t5, $zero, 10
 
 while:
 	sleu 	$t4, $t3, $t5
@@ -34,8 +34,11 @@ while:
 	bnez 	$t4, oddsum
 	sll 	$zero, $zero, 0
 	add 	$t0, $t0, $t3
+	j 	endif
+	sll 	$zero, $zero, 0
 oddsum:
 	add 	$t1, $t1, $t3
+endif:
 	add 	$t2, $t2, $t3
 	addi 	$t3, $t3, 1
 	j 	while 
@@ -45,4 +48,3 @@ endwhile:
 	li 	$v0, 10
 	syscall
 
-	
